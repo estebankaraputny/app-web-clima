@@ -1,0 +1,181 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../asset/image/paisaje-fondo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content-page{
+    min-height: 100%;
+    width: 100%;
+    background-color: #000000a9;
+    padding: 2rem;
+}
+
+/* COMIENZA CARD CLIMA  */
+.section-clime{
+    background-color:  #000000a9;
+    width: 30%;
+    height: 50vh;
+    border-radius: 24px;
+    padding: 1rem;
+    color: #fff;
+}
+
+.container-clime{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cont-search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 73%;
+  }
+  
+  .buscar-ubi {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+  
+  .buscar-ubi::placeholder {
+    color: transparent;
+  }
+  
+  .buscar-ubi:placeholder-shown ~ .form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+  }
+  
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+  }
+  
+  .buscar-ubi:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #b9d9ee, #b0c5ca);
+    border-image-slice: 1;
+  }
+  
+  .buscar-ubi:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #b9d9ee;
+    font-weight: 700;
+  }
+  
+  /* reset input */
+  .buscar-ubi:required, .buscar-ubi:invalid {
+    box-shadow: none;
+  }
+
+  .button-ubi{
+    padding: 0.8rem;
+    border-radius: 27px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+  }
+  .button-ubi:hover{
+    cursor: pointer;
+    background-color: #b0c5ca;
+    color: #000000;
+  }
+.ubicacion{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.name-ubi{
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+  .content-info{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cont-temp{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+  }
+
+.img-clima{
+    height: 100px;
+    width: 100px;
+}
+.temp{
+    font-size: 5rem;
+    font-weight: 300;
+}
+.cont-min-max{
+    height: 50%;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.date{
+    font-size: 1.5rem;
+}
+.mas-detalles{
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mini-detalles{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.title-detalles{
+    font-weight: 500;
+    display: inline-flex;
+}
+
