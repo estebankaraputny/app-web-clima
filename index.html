@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </section>
-            <div class="hour-and-lofi">
+            <section class="hour-and-lofi">
                 <section class="section-hour">
                     <div class="container-clock">
                         <div class="cont-reloj">
@@ -63,13 +63,54 @@
                     <h3 class="title-youtube"><i class="bi bi-music-note-beamed"></i> Music for you</h3>
                     <iframe class="youtube-lofi" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="lofi hip hop radio 📚 - beats to relax/study to" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </section>
-            </div>
+            </section>
+            <section class="play-music">
+                <div>
+                    <p style="color: aliceblue; font-size: 2rem;">Sección: Proximamente reproductor de musica con API Spotyfi</p>
+                </div>
+            </section>
         </div>
-        <section class="section-music">
-            <div>
-
-            </div>
-        </section>
+        <div class="climaWeek-notice">
+            <section class="cont-climeWeek">
+                <div >
+                    <p style="color: aliceblue; font-size: 2rem;">Sección: Proximente los climas de los dias de la semana con APi Open Weather Map</p>
+                </div>
+            </section>
+            <section class="cont-notice">
+                <div>
+                    <h2 class="title-section-noti"><i class="bi bi-globe-americas"></i> Noticias de última hora.</h2>
+                    <!-- Example split danger button -->
+                    <div class="btn-group">
+                        <!-- <button type="button" class="btn btn-danger">Seleccione su país</button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                        </button> -->
+                        <select class="dropdown-menu btn btn-second" id="selectCountry">
+                            <option value="ar" id="selectCountryOptions">Seleccione su país</option>
+                            <option value="ar" id="selectCountryOptions">Argentina</option>
+                            <option value="br" id="selectCountryOptions">Brazil</option>
+                            <option value="ca" id="selectCountryOptions">Canada</option>
+                            <option value="ch" id="selectCountryOptions">Chile</option>
+                            <option value="co" id="selectCountryOptions">Colombia</option>
+                            <option value="gb" id="selectCountryOptions">England</option>
+                            <option value="fr" id="selectCountryOptions">Francia</option>
+                            <option value="in" id="selectCountryOptions">India</option>
+                            <option value="in" id="selectCountryOptions">Japan</option>
+                            <option value="mx" id="selectCountryOptions">Mexico</option>
+                            <option value="ru" id="selectCountryOptions">Russia</option>
+                            <option value="us" id="selectCountryOptions">United States</option>
+                            <option value="ve" id="selectCountryOptions">Venezuela</option>
+                        </select >
+                    </div>
+                    
+<!-- // El código ISO 3166-1 de 2 letras del país del que desea obtener titulares. Posibles opciones: ar
+// br ca ch cn co eg fr in jp mx ru us ve  -->
+                </div>
+                <div id="noticias" class="noticias">
+                    
+                </div>
+            </section>
+        </div>
     </main>
     <footer></footer>
 </body>

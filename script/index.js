@@ -1,10 +1,11 @@
-const API_KEY = '6df91a897b673753ddd7c176eeef7e83'
+const API_KEY_CLIMA = '6df91a897b673753ddd7c176eeef7e83'
+const API_KEY_NOTICIAS = 'd148999bd2314dca8c00a2b099ee9e06'
 const nameCity = document.getElementById("city");
 const buttonSearch = document.getElementById("button-ubi");
 
 const fetchData = position => {
     const {latitude, longitude} = position.coords;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY_CLIMA}`)
     .then( response => response.json())
     .then( data => setWeatherDate(data));
 }
@@ -22,7 +23,7 @@ const showError = message => {
 }
 
 const fetchDateInput = (city) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY}`
+    const url = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY_CLIMA}`
     fetch(url)
     .then(data => {
         return data.json()
@@ -89,6 +90,7 @@ const setWeatherDate = (data) =>{
 const time = document.getElementById("time");
 const fechaActual = document.getElementById("fecha");
 
+const dayWeek = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
 const intervalo = setInterval(() => {
@@ -99,10 +101,11 @@ const intervalo = setInterval(() => {
     let day = local.getDate(),
         month = local.getMonth(),
         year = local.getFullYear();
+        dayName = local.getDay();
 
         // console.log(local.toLocaleTimeString())
         time.innerHTML = local.toLocaleTimeString();
-        fechaActual.innerHTML= `<i class="bi bi-calendar-event"></i> ${day} de ${monthNames[month]} del ${year}`;
+        fechaActual.innerHTML= `<i class="bi bi-calendar-event"></i> ${dayWeek[dayName]}, ${day} de ${monthNames[month]} del ${year}`;
     //  if(){
 
     //  }
@@ -113,3 +116,49 @@ const intervalo = setInterval(() => {
 const onLoad = () => {
     navigator.geolocation.getCurrentPosition(fetchData);
 }
+
+// NOTICIAS APPI 
+
+// El código ISO 3166-1 de 2 letras del país del que desea obtener titulares. Posibles opciones: ar
+// br ca ch cn co eg fr in jp mx ru us ve 
+
+
+let urlNoticias = `https://newsapi.org/v2/top-headlines?country=ve&apiKey=${API_KEY_NOTICIAS}`
+
+const selectCountry = document.getElementById("selectCountry");
+const insertNoticas = document.getElementById("noticias");
+const optionsCountry = document.getElementById("selectCountryOptions");
+
+selectCountry.addEventListener("click", e => {
+    console.log(optionsCountry.value)
+})
+
+
+fetch(urlNoticias).then(resp => resp.json()).then(noticiasDatos => {
+    console.log(noticiasDatos);
+    let noticias = noticiasDatos.articles;
+    for (let i = 0; i < 3; i++) {  
+        insert(noticias[i]);
+    }
+     
+    function insert(numero) {  // Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional// Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional
+        let div = document.createElement("div");
+        div.classList.add("content-info-noti");
+        div.innerHTML = `
+            <div class="img-and-descri">
+                <div class="cont-img">
+                    <img src="${numero.urlToImage}" class="img-noticias" alt="No se encontro img en la API - Imagen descriptiba de la noticia">
+                </div>
+            </div>
+            <div>
+                <h2 class="title-noticias">${numero.title}</h2>
+            </div>
+            <div class="button-ver-autor">
+                    <!-- <p class="description-noticias">${numero.description}</p> -->
+                    <p class="autor-noticia">${numero.author}</p>
+                    <a class="url-noti" href="${numero.url}" target="_blank">Saber más</a>
+            </div>
+        `;
+        insertNoticas.appendChild(div);
+    }
+})
