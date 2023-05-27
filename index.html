@@ -4,50 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Tu lugar - Clima actual</title>
+    <link rel="shortcut icon" href="https://img.freepik.com/iconos-gratis/nublado_318-368363.jpg?w=2000" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Inconsolata:wght@300&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body onload="onLoad()">
     <header></header>
     <main class="content-page">
-        <section class="section-clime">
-            <div id="container-clime" class="container-clime">
-                <div class="cont-search">
-                    <div class="form__group field">
-                        <input type="input" class="buscar-ubi" placeholder="Ingrese su ciudad aqui" required="" id="city">
-                        <label for="name" class="form__label">Ingrese su ciudad aqui</label>
+        <div class="clima-and-hour">
+            <section class="section-clime">
+                <div id="container-clime" class="container-clime">
+                    <div class="cont-search">
+                        <div class="form__group field">
+                            <input type="input" class="buscar-ubi" placeholder="Ingrese su ciudad aqui" required="" id="city">
+                            <label for="name" class="form__label">Ingrese su ciudad aqui</label>
+                        </div>
+                        <button class="button-ubi" id="button-ubi">
+                            <i class="bi bi-search"></i>
+                        </button>
                     </div>
-                    <button class="button-ubi" id="button-ubi">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-                <div class="ubicacion" id="contLocation">
-                    
-                </div>
-                <div class="content-info" id="description">
-                    <div class="cont-temp" id="temperature">
+                    <div class="ubicacion" id="contLocation">
                         
                     </div>
-                    <div class="cont-min-max" id="minAndMax">
-                        
+                    <div class="content-info" id="description">
+                        <div class="cont-temp" id="temperature">
+                            
+                        </div>
+                        <div class="cont-min-max" id="minAndMax">
+                            
+                        </div>
+                    </div>
+                    <div class="mas-detalles">
+                        <div class="mini-detalles" id="wind">  
+                        </div>
+                        <div class="mini-detalles" id="lluvias">
+                        </div>
+                        <div class="mini-detalles" id="humidity">
+                        </div>
                     </div>
                 </div>
-                <div class="mas-detalles">
-                    <div class="mini-detalles" id="wind">  
+            </section>
+            <div class="hour-and-lofi">
+                <section class="section-hour">
+                    <div class="container-clock">
+                        <div class="cont-reloj">
+                            <p class="time" id="time"></p>
+                            <!-- <p id="amOPm"></p> -->
+                        </div>
+                        <div class="cont-fecha">
+                            <p class="fecha" id="fecha">
+                            </p>
+                        </div>
                     </div>
-                    <div class="mini-detalles" id="lluvias">
-                    </div>
-                    <div class="mini-detalles" id="humidity">
-                    </div>
-                </div>
+                </section>
+                <section class="music-lofi">
+                    <h3 class="title-youtube"><i class="bi bi-music-note-beamed"></i> Music for you</h3>
+                    <iframe class="youtube-lofi" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="lofi hip hop radio 📚 - beats to relax/study to" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </section>
             </div>
-        </section>
-        <section class="section-hour">
-            <div></div>
-            <div></div>
-        </section>
+        </div>
         <section class="section-music">
             <div>
 

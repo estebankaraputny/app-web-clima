@@ -22,6 +22,11 @@ body{
     padding: 2rem;
 }
 
+.clima-and-hour{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
 /* COMIENZA CARD CLIMA  */
 .section-clime{
     background-color:  #000000a9;
@@ -127,7 +132,7 @@ body{
 }
 .name-ubi{
     padding-left: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
   .content-info{
@@ -141,7 +146,7 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 50%;
+    height: 70%;
     width: 100%;
   }
 
@@ -150,11 +155,11 @@ body{
     width: 100px;
 }
 .temp{
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: 300;
 }
 .cont-min-max{
-    height: 50%;
+    height: 25%;
     width: 80%;
     display: flex;
     justify-content: space-evenly;
@@ -179,3 +184,54 @@ body{
     display: inline-flex;
 }
 
+/* RELOJ  */
+.hour-and-lofi{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.section-hour{
+    background-color: #000000a9;
+    height: 15rem;
+    width: 100%;
+    border-radius: 24px;
+    padding: 1rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container-clock{
+    width: 100%;
+}
+.cont-reloj{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 7rem;
+    font-family: 'Abel', sans-serif;
+}
+.cont-fecha{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.music-lofi{
+    background-color: #000000a9;
+    border-radius: 24px;
+    height:55%;
+    padding: 1.5rem;
+    color: #fff;
+}
+.title-youtube{
+    font-size: 1rem;
+}
+.youtube-lofi{
+    width: 100%;
+    height: 90%;
+    border-radius: 24px;
+    margin-top: 0.5rem;
+}

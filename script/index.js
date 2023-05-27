@@ -45,8 +45,8 @@ const setWeatherDate = (data) =>{
         <p class="temp">${Math.trunc(data.main.temp)}°C</p>
     `
     contentMinMax.innerHTML = `
-        <p class="date" id="tempMin">Min ${Math.trunc(data.main.temp_min)}°C</p>
-        <p class="date" id="tempMin">Max ${Math.trunc(data.main.temp_max)}°C</p>
+        <p class="date" id="tempMin"><i class="bi bi-thermometer"></i> Min ${Math.trunc(data.main.temp_min)}°C</p>
+        <p class="date" id="tempMin"><i class="bi bi-thermometer-high"></i> Max ${Math.trunc(data.main.temp_max)}°C</p>
                         `
 
     humedad.innerHTML = `
@@ -70,7 +70,7 @@ const setWeatherDate = (data) =>{
             Viento
         </p>
         <p class="date-detalles">
-            ${Math.trunc(data.wind.gust)} km/h
+            ${Math.trunc(data.wind.speed)} km/h
         </p>
     `
 
@@ -85,8 +85,29 @@ const setWeatherDate = (data) =>{
     `
 }
 
+// INICIA RELOJ 
+const time = document.getElementById("time");
+const fechaActual = document.getElementById("fecha");
 
+const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
+const intervalo = setInterval(() => {
+    
+    const amOPM = document.getElementById("amOPm");
+    const local = new Date();
+    
+    let day = local.getDate(),
+        month = local.getMonth(),
+        year = local.getFullYear();
+
+        // console.log(local.toLocaleTimeString())
+        time.innerHTML = local.toLocaleTimeString();
+        fechaActual.innerHTML= `<i class="bi bi-calendar-event"></i> ${day} de ${monthNames[month]} del ${year}`;
+    //  if(){
+
+    //  }
+
+}, 1000);
 
 
 const onLoad = () => {
