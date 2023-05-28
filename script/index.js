@@ -113,25 +113,23 @@ const intervalo = setInterval(() => {
 }, 1000);
 
 
-const onLoad = () => {
-    navigator.geolocation.getCurrentPosition(fetchData);
-}
-
 // NOTICIAS APPI 
 
 // El código ISO 3166-1 de 2 letras del país del que desea obtener titulares. Posibles opciones: ar
 // br ca ch cn co eg fr in jp mx ru us ve 
 
 
-let urlNoticias = `https://newsapi.org/v2/top-headlines?country=ve&apiKey=${API_KEY_NOTICIAS}`
+let urlNoticias = `https://newsapi.org/v2/top-headlines?=ar&apiKey=${API_KEY_NOTICIAS}`
 
 const selectCountry = document.getElementById("selectCountry");
 const insertNoticas = document.getElementById("noticias");
-const optionsCountry = document.getElementById("selectCountryOptions");
 
-selectCountry.addEventListener("click", e => {
-    console.log(optionsCountry.value)
-})
+// let codigoPais = "";
+
+// selectCountry.addEventListener("click", e => {
+//     codigoPais = selectCountry.value;
+//     console.log(codigoPais);
+// })
 
 
 fetch(urlNoticias).then(resp => resp.json()).then(noticiasDatos => {
@@ -162,3 +160,8 @@ fetch(urlNoticias).then(resp => resp.json()).then(noticiasDatos => {
         insertNoticas.appendChild(div);
     }
 })
+
+
+const onLoad = () => {
+    navigator.geolocation.getCurrentPosition(fetchData);
+}
