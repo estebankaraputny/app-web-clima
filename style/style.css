@@ -700,6 +700,10 @@ body{
           .button-ver-autor{
               flex-direction: column;
             }
+            .mensaje-de-error{
+              font-size: 1rem;
+              text-align: center;
+            }
           }
           @media(max-width: 280px){
             .buscar-ubi, .buscar-ubi:placeholder-shown ~ .form__label{
