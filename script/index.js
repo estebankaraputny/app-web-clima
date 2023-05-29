@@ -1,3 +1,40 @@
+// SPINNER DE CARGA 
+
+function fadeOut(el) {
+    el.style.opacity = 1;
+    (function fade() {
+        if ((el.style.opacity -= .1) < 0) {
+            el.style.display = "none";
+        } else {
+            requestAnimationFrame(fade);
+        }
+    })();
+};
+
+function fadeIn(el, display) {
+    el.style.opacity = 0;
+    el.style.display = display || "block";
+    (function fade() {
+        var val = parseFloat(el.style.opacity);
+        if (!((val += .1) > 1)) {
+            el.style.opacity = val;
+            requestAnimationFrame(fade);
+        }
+    })();
+};
+
+const loaderPage = document.querySelector("#loader");
+const bodyPage = document.querySelector("main")
+
+window.onload = function(){
+    fadeOut(loaderPage);
+    bodyPage.classList.remove("hiddenBody");
+
+    // OBTENEMOS LA UBICACION DEL USUARIO 
+    navigator.geolocation.getCurrentPosition(fetchData);
+};
+
+// CONSUMIENDO APIS 
 const API_KEY_CLIMA = '6df91a897b673753ddd7c176eeef7e83'
 const API_KEY_NOTICIAS = 'd148999bd2314dca8c00a2b099ee9e06'
 const nameCity = document.getElementById("city");
@@ -31,13 +68,15 @@ const fetchDateInput = (city) => {
     .then(dataJSON => setWeatherDate(dataJSON));
 }
 
+    // IMPRIMIR EN EL DOM 
 
 const temperature = document.getElementById("temperature");
 const contentMinMax = document.getElementById("minAndMax");
 const windSpeed = document.getElementById("wind");
 const contLocation = document.getElementById("contLocation");
 const humedad = document.getElementById("humidity");
-const lluvia = document.getElementById("lluvias")
+const lluvia = document.getElementById("lluvias");
+const estadoClima = document.getElementById("estadoDelClima");
 
 const setWeatherDate = (data) =>{
     console.log(data);
@@ -45,6 +84,13 @@ const setWeatherDate = (data) =>{
         <!-- <img src="./asset/image/partly_cloudy.png" alt="" class="img-clima"> -->
         <p class="temp">${Math.trunc(data.main.temp)}°C</p>
     `
+    estadoClima.innerHTML = `
+        <p class="title-estado-clima">
+           <!-- <i class="${data.weather[0].icon}" stlye="color:#fff;"></i> -->
+            ${data.weather[0].description.toUpperCase()}
+        </p>
+    `
+
     contentMinMax.innerHTML = `
         <p class="date" id="tempMin"><i class="bi bi-thermometer"></i> Min ${Math.trunc(data.main.temp_min)}°C</p>
         <p class="date" id="tempMin"><i class="bi bi-thermometer-high"></i> Max ${Math.trunc(data.main.temp_max)}°C</p>
@@ -102,16 +148,16 @@ const intervalo = setInterval(() => {
         month = local.getMonth(),
         year = local.getFullYear();
         dayName = local.getDay();
-
+        
         // console.log(local.toLocaleTimeString())
         time.innerHTML = local.toLocaleTimeString();
         fechaActual.innerHTML= `<i class="bi bi-calendar-event"></i> ${dayWeek[dayName]}, ${day} de ${monthNames[month]} del ${year}`;
     //  if(){
 
-    //  }
-
+        //  }
+        
 }, 1000);
-
+    
 
 // NOTICIAS APPI 
 
@@ -119,49 +165,74 @@ const intervalo = setInterval(() => {
 // br ca ch cn co eg fr in jp mx ru us ve 
 
 
-let urlNoticias = `https://newsapi.org/v2/top-headlines?=ar&apiKey=${API_KEY_NOTICIAS}`
-
-const selectCountry = document.getElementById("selectCountry");
 const insertNoticas = document.getElementById("noticias");
+const selectCountry = document.getElementById("selectCountry");
 
-// let codigoPais = "";
-
-// selectCountry.addEventListener("click", e => {
-//     codigoPais = selectCountry.value;
-//     console.log(codigoPais);
-// })
-
-
-fetch(urlNoticias).then(resp => resp.json()).then(noticiasDatos => {
-    console.log(noticiasDatos);
-    let noticias = noticiasDatos.articles;
-    for (let i = 0; i < 3; i++) {  
-        insert(noticias[i]);
-    }
-     
-    function insert(numero) {  // Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional// Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional
-        let div = document.createElement("div");
-        div.classList.add("content-info-noti");
-        div.innerHTML = `
-            <div class="img-and-descri">
-                <div class="cont-img">
-                    <img src="${numero.urlToImage}" class="img-noticias" alt="No se encontro img en la API - Imagen descriptiba de la noticia">
-                </div>
-            </div>
-            <div>
-                <h2 class="title-noticias">${numero.title}</h2>
-            </div>
-            <div class="button-ver-autor">
-                    <!-- <p class="description-noticias">${numero.description}</p> -->
-                    <p class="autor-noticia">${numero.author}</p>
-                    <a class="url-noti" href="${numero.url}" target="_blank">Saber más</a>
-            </div>
-        `;
-        insertNoticas.appendChild(div);
+selectCountry.addEventListener("change", () => {
+    let codigoPais = selectCountry.value;
+    console.log(codigoPais);
+    if(selectCountry.value === "invalid"){
+        errorNotice();
+    } else{
+        limpiarNoticias();
+        fetchNoticeInput(codigoPais);
     }
 })
 
+const limpiarNoticias = () =>{
+    insertNoticas.innerHTML = "";
+};
 
-const onLoad = () => {
-    navigator.geolocation.getCurrentPosition(fetchData);
+const errorNotice = () => {
+    insertNoticas.innerHTML = `
+        <div class="campo-vacio">
+            <img class="ilustracion-error" src="./asset/image/ilustrations/Currect location-60b6.svg" alt="Ilustracion de error">
+            <p class="mensaje-de-error">No se ha seleccionado ningún país, por favor seleccione su país.</p>
+        </div>
+    `
+};
+
+const fetchNoticeInput = pais => {
+    let urlNoticias = `https://newsapi.org/v2/top-headlines?country=${pais}&apiKey=${API_KEY_NOTICIAS}`
+    
+    fetch(urlNoticias).then(resp => resp.json()).then(noticiasDatos => {
+        console.log(noticiasDatos);
+        let noticias = noticiasDatos.articles;
+        for (let i = 0; i < 3; i++) {  
+            console.log(i)
+            insert(noticias[i]);
+        }});
 }
+         
+function insert(numero) {  // Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional// Corrección: Cambiar la sintaxis de flecha a la declaración de función convencional
+    let tituloAcortado = acortarTitulo(numero.title, 80);
+    // let autorAcortado = acortarTitulo(numero.author, 15);
+
+    let div = document.createElement("div");
+    div.classList.add("content-info-noti");
+    div.innerHTML = `
+                <div class="img-and-descri">
+                    <div class="cont-img">
+                        <img src="${numero.urlToImage}" class="img-noticias" alt="No se encontró img en la API - Imagen descriptiva de la noticia">
+                    </div>
+                </div>
+                <div>
+                    <h2 class="title-noticias">${tituloAcortado}</h2>
+                </div>
+                <div class="button-ver-autor">
+                        <!-- <p class="description-noticias">${numero.description}</p> -->
+                        <p class="autor-noticia">${numero.author}</p>
+                        <a class="url-noti" href="${numero.url}" target="_blank">Saber más</a>
+                </div>
+            `;
+            insertNoticas.appendChild(div);
+}
+
+const acortarTitulo = (titulo, longMax) => {
+    if(titulo.length > longMax){
+        return titulo.substring(0, longMax) + "...";
+    }
+}
+
+
+

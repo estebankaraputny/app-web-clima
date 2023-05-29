@@ -6,7 +6,7 @@
 }
 
 body{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
     background-image: url(../asset/image/paisaje-fondo.jpg);
@@ -14,7 +14,123 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+  
+.hiddenBody{
+  display: none;
 
+}
+
+/* SPINNER DE CARGAR  */
+.container-load{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000c5;
+}
+
+.cloud {
+  width: 250px;
+}
+
+.front {
+  padding-top: 45px;
+  margin-left: 25px;
+  display: inline;
+  position: absolute;
+  z-index: 11;
+  animation: clouds 8s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.back {
+  margin-top: -30px;
+  margin-left: 150px;
+  z-index: 12;
+  animation: clouds 12s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.right-front {
+  width: 45px;
+  height: 45px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #4c9beb;
+  display: inline-block;
+  margin-left: -25px;
+  z-index: 5;
+}
+
+.left-front {
+  width: 65px;
+  height: 65px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #4c9beb;
+  display: inline-block;
+  z-index: 5;
+}
+
+.right-back {
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 50% 0%;
+  background-color: #4c9beb;
+  display: inline-block;
+  margin-left: -20px;
+  z-index: 5;
+}
+
+.left-back {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0% 50%;
+  background-color: #4c9beb;
+  display: inline-block;
+  z-index: 5;
+}
+
+.sun {
+  width: 120px;
+  height: 120px;
+  background: -webkit-linear-gradient(to right, #fcbb04, #fffc00);
+  background: linear-gradient(to right, #fcbb04, #fffc00);
+  border-radius: 60px;
+  display: inline;
+  position: absolute;
+}
+
+.sunshine {
+  animation: sunshines 2s infinite;
+}
+
+@keyframes sunshines {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes clouds {
+  0% {
+    transform: translateX(15px);
+  }
+
+  50% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(15px);
+  }
+}
+
+/* INICIO PAGINA  */
 .content-page{
     min-height: 100%;
     width: 100%;
@@ -154,6 +270,9 @@ body{
     height: 100px;
     width: 100px;
 }
+.title-estado-clima{
+  font-size: 1.5rem;
+}
 .temp{
     font-size: 7rem;
     font-weight: 300;
@@ -240,9 +359,29 @@ body{
   width: 30%;
   height: 50vh;
   border-radius: 24px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.play-music div p{
-  height: 100%;
+.mensaje-contruccion{
+  font-size:1.5rem;
+  color: #9b9b9b;
+  text-align: center;
+  width: 80%;
+}
+
+.content-mgg-contruction{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-ilustracion{
+  width: 100%;
+  height: 50%;
 }
 
 /* CLIMA SEMANAL Y NOTICIAS  */
@@ -273,9 +412,28 @@ body{
 }
 
 /* NOTICIAS  */
+
+.cont-title-options{
+  display: flex;
+  justify-content: space-between;
+}
 .title-section-noti{
   color: #fff;
   font-size: 1rem;
+}
+.select-country{
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+.select-country:hover{
+  cursor: pointer;
+}
+.select-country > option{
+  background-color: #000000a9;
+  color: #fff;
+  cursor: pointer;
 }
 .noticias{
   display: flex;
@@ -340,4 +498,153 @@ body{
 .url-noti:hover{
   background-color: #000000;
   cursor: pointer;
+}
+.campo-vacio{
+  height: 90%;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ilustracion-error{
+  width: 60%;
+  height: 70%;
+}
+.mensaje-de-error{
+  color: #9b9b9b;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+
+/* RESPONSIVE  */
+
+@media screen and (max-width: 1250px){
+  /* CARD DEL CLIMA ACTUAL  */
+  .name-ubi{
+    font-size: 1rem;
+  }
+  .temp{
+    font-size: 5rem;
+  }
+  .date{
+    font-size: 1.2rem;
+  }
+  .mini-detalles{
+    font-size: 1rem;
+  }
+
+  /* CARD RELOJ  */
+  .section-hour{
+    justify-content: center;
+    align-items: center;
+  }
+  .time{
+    font-size: 6rem;
+  }
+  .fecha{
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 980px){
+    .time{
+      font-size: 5rem;
+    }
+    .climaWeek-notice{
+      flex-direction: column;
+      height: auto;
+    }
+    .cont-climeWeek{
+      width: 100%;
+      height: 400px;
+    }
+    .cont-notice{
+      width: 100%;
+      height: 25rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 850px){
+      .clima-and-hour{
+        flex-direction: column;
+        align-items: center;
+      }
+      .section-clime{
+        width: 100%;
+        /* margin: auto; */
+        margin-bottom: 1rem;
+      }
+      .form__group{
+        width: 85%;
+      }
+      .name-ubi{
+        font-size: 1.6rem;
+      }
+      .temp{
+        font-size: 7rem;
+      }
+      .date{
+        font-size: 1.6rem;
+      }
+      .mini-detalles{
+        font-size: 1.3rem;
+      }
+
+      .hour-and-lofi{
+        flex-direction: row;
+        width: 100%;
+        height: 15rem;
+        margin: auto;
+        margin-bottom: 1rem;
+        justify-content: space-between;
+      }
+      .section-hour{
+        width: 60%;
+        height: 100%;
+      }
+      .music-lofi{
+        width: 38%;
+        height: 100%;
+      }
+      .play-music{
+        width: 100%;
+      }
+     
+      @media (max-width: 570px){
+        .name-ubi, .mini-detalles{
+          font-size: 1rem;
+        }
+        .hour-and-lofi{
+          flex-direction: column;
+          height: 30rem;
+          justify-content: space-between;
+        }
+        .section-hour{
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+        .time{
+          font-size: 6rem;
+        }
+        .music-lofi{
+          width: 100%;
+        }
+        .cont-notice{
+          height: auto;
+        }
+        .noticias{
+          flex-direction: column;
+        }
+        .content-info-noti{
+          width: 100%;
+          height: 20rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    
+  }
 }
