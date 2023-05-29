@@ -132,7 +132,7 @@ body{
 
 /* INICIO PAGINA  */
 .content-page{
-    min-height: 100%;
+    min-height: 100vh;
     width: 100%;
     background-color: #000000a9;
     padding: 2rem;
@@ -519,6 +519,34 @@ body{
   font-weight: 300;
 }
 
+/* FOOTER  */
+
+.footer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #000000ef;
+  color: #f0f0f0;
+  height: 9rem;
+}
+
+.cont-dep-copy, .redes-footer{
+  width: 40%;
+  text-align: center;
+}
+.copyright, .title-redes{
+  padding: 1rem;
+}
+.cont-redes-link{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.link-redes{
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
 
 /* RESPONSIVE  */
 
@@ -611,6 +639,19 @@ body{
       }
       .play-music{
         width: 100%;
+      }
+      .footer{
+        flex-direction: column;
+        height: 19rem;
+      }
+      .cont-dep-copy, .redes-footer{
+        width: 100%;
+      }
+      .cont-redes-link{
+        flex-direction: column;
+      }
+      .link-redes{
+        margin-bottom: 1rem;
       }
      
       @media (max-width: 570px){
