@@ -216,7 +216,7 @@ function insert(numero) {  // Corrección: Cambiar la sintaxis de flecha a la de
                         <img src="${numero.urlToImage}" class="img-noticias" alt="No se encontró img en la API - Imagen descriptiva de la noticia">
                     </div>
                 </div>
-                <div>
+                <div class="cont-title-noti">
                     <h2 class="title-noticias">${tituloAcortado}</h2>
                 </div>
                 <div class="button-ver-autor">

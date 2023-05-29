@@ -642,9 +642,83 @@ body{
           height: 20rem;
           margin-bottom: 1rem;
         }
+        .mensaje-contruccion{
+          font-size: 1rem;
+          width: 100%;
+        }
+
+        @media (max-width:420px){
+          .section-clime{
+            height: 65vh;
+          }
+          .title-estado-clima, .date{
+            font-size: 1.2rem;
+          }
+          .temp{
+            font-size: 6rem;
+          }
+          .section-hour{
+            height: 40vh;
+          }
+          .mini-detalles, .fecha{
+            font-size: 0.8rem;
+          }
+          .time{
+            font-size: 4rem;
+          }
+          .cont-title-options{
+            flex-direction: column;
+          }
+          .title-section-noti{
+            margin-bottom: 1rem;
+            }
+            .select-country{
+              font-size: 0.8rem;
+            }
+            .noticias{
+              padding: 1rem 0;
+            }
+            .title-noticias{
+              font-size: 0.8rem;
+              padding: 0.5rem;
+            }
+            .autor-noticia{
+              text-align: left;
+              font-size: 0.7rem;
+              width: 100%;
+              overflow: hidden;
+            }
+            .url-noti{
+              margin-top: 0.5rem;
+              font-size: 0.8rem;
+              width: 100%;
+              text-align: center;
+            }
+            .cont-title-noti{
+              height: 65px;
+            }
+          .button-ver-autor{
+              flex-direction: column;
+            }
+          }
+          @media(max-width: 280px){
+            .buscar-ubi, .buscar-ubi:placeholder-shown ~ .form__label{
+              font-size: 11px;
+            }
+            .name-ubi, .date{
+              font-size: 0.8rem;
+            }
+            .temp{
+              font-size: 4rem;
+            }
+            .time{
+              font-size: 3.5rem;
+            }
+          }
+        }
+
       }
     }
 
     
-  }
 }
