@@ -514,8 +514,9 @@ body {
 }
 .mensaje-de-error {
   color: #9b9b9b;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 300;
+  text-align: center;
 }
 
 /* FOOTER  */
@@ -675,7 +676,7 @@ body {
           margin-bottom: 1rem;
         }
         .time {
-          font-size: 6rem;
+          font-size: 5.5rem;
         }
         .music-lofi {
           width: 100%;
