@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu lugar - Clima actual</title>
-    <link rel="shortcut icon" href="https://img.freepik.com/iconos-gratis/nublado_318-368363.jpg?w=2000" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Inconsolata:wght@300&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Tu lugar - Clima, Hora y Noticias actuales</title>
+    <link rel="shortcut icon" href="https://img.freepik.com/iconos-gratis/nublado_318-368363.jpg?w=2000"
+        type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Inconsolata:wght@300&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style/style.css">
 </head>
-<body onload="onLoad()" >
+
+<body onload="onLoad()">
     <div class="container-load" id="loader">
         <div class="cloud front">
-          <span class="left-front"></span>
-          <span class="right-front"></span>
+            <span class="left-front"></span>
+            <span class="right-front"></span>
         </div>
         <span class="sun sunshine"></span>
         <span class="sun"></span>
         <div class="cloud back">
-          <span class="left-back"></span>
-          <span class="right-back"></span>
+            <span class="left-back"></span>
+            <span class="right-back"></span>
         </div>
-      </div>
+    </div>
     <header></header>
     <main class="content-page hiddenBody">
         <div class="clima-and-hour">
@@ -30,7 +35,8 @@
                 <div id="container-clime" class="container-clime">
                     <div class="cont-search">
                         <div class="form__group field">
-                            <input type="input" class="buscar-ubi" placeholder="Ingrese su ciudad aqui" required="" id="city">
+                            <input type="input" class="buscar-ubi" placeholder="Ingrese su ciudad aqui" required=""
+                                id="city">
                             <label for="name" class="form__label">Ingrese su ciudad aqui</label>
                         </div>
                         <button class="button-ubi" id="button-ubi">
@@ -38,21 +44,107 @@
                         </button>
                     </div>
                     <div class="ubicacion" id="contLocation">
-                        
+                        <div class="campo-vacio">
+                            <svg class="ilustracion-error" id="Layer_1" data-name="Layer 1"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180">
+                                <title>Flat Web Illustrations Pack - Scene 43</title>
+                                <path
+                                    d="M114.16,67c7.41-5.16,9.22-8.43,15.15-19.82s22.48-16.82,34.47-7.53S173.44,61,183.77,67s16.51,9.78,13.93,29.8-34.58,52.78-76.39,47.88S57.83,114.86,56.54,91.55s22.6-27.95,35.3-23.31A27,27,0,0,0,114.16,67Z"
+                                    fill="#0d1019" />
+                                <path
+                                    d="M133.87,122.8a33.16,33.16,0,1,0-12.45-48,35.79,35.79,0,0,0-2,3.35,33.16,33.16,0,0,0,14.41,44.63Zm5.84-58.22a29.94,29.94,0,0,1,23,1.85,30.59,30.59,0,0,1,6.4,4.38c-3.17-.24-7.2.66-11.68,2.57a40,40,0,0,0-12.09-7.14,26.09,26.09,0,0,0-6.28-1.45Zm4.64,4.49a36.68,36.68,0,0,1,10.08,5.72,75.48,75.48,0,0,0-12.32,8L130.59,69.47C134,67.27,138.88,67.12,144.35,69.07Zm-16,2.37,11.47,13.23a74.2,74.2,0,0,0-10.59,10.81,36.31,36.31,0,0,1-3.62-11.07C124.79,78.92,125.76,74.4,128.31,71.44Zm-8,31.11a30,30,0,0,1,1.86-23l.25-.47a26.37,26.37,0,0,0,.22,5.76,39.78,39.78,0,0,0,4.61,13.33c-.11.15-.22.31-.32.47a26.83,26.83,0,0,0-4.26,9.32A29,29,0,0,1,120.27,102.55Z"
+                                    fill="#4C9BEB" />
+                                <path
+                                    d="M180.08,71.34a18.69,18.69,0,0,1,7.79-.15,5.47,5.47,0,0,1,2,1,3.74,3.74,0,0,1,1.35,2.11,6.59,6.59,0,0,1-.84,4.39,27.48,27.48,0,0,1-4.85,6.25,67.78,67.78,0,0,1-5.78,5.1,144.41,144.41,0,0,1-25.94,15.93,145.77,145.77,0,0,1-28.54,10.6,68.4,68.4,0,0,1-7.58,1.41,29.52,29.52,0,0,1-7.92.07,7.79,7.79,0,0,1-4.09-1.8,3.92,3.92,0,0,1-1.15-2.33,5.12,5.12,0,0,1,.34-2.32A12,12,0,0,1,107,108.1a27.09,27.09,0,0,1,2.71-2.75.56.56,0,0,1,.79.78,27,27,0,0,0-2.23,2.93,10.6,10.6,0,0,0-1.5,3.09,3.26,3.26,0,0,0-.08,1.4,1.59,1.59,0,0,0,.6.92,5.5,5.5,0,0,0,2.82.86,27.75,27.75,0,0,0,7.08-.59c2.39-.46,4.78-1,7.14-1.72,4.72-1.41,9.41-3,14-4.92s9.15-3.85,13.61-6,8.88-4.45,13.18-6.92a146.3,146.3,0,0,0,12.54-7.92q3-2.15,5.78-4.55a25,25,0,0,0,4.78-5.24,4.7,4.7,0,0,0,.93-2.77c-.06-.77-.78-1.42-1.83-1.82a11.68,11.68,0,0,0-3.46-.67,30.41,30.41,0,0,0-3.7,0h0a.4.4,0,0,1-.09-.8Z"
+                                    fill="#fafafa" />
+                                <circle cx="173.77" cy="91.64" r="9.99" fill="#fafafa" />
+                                <polygon
+                                    points="176.07 88.72 182.27 92.36 176.07 96.31 176.07 93.75 178.1 92.52 176.07 91.39 176.07 88.72"
+                                    fill="#0d1019" />
+                                <polygon
+                                    points="171.47 86.8 165.27 90.43 171.47 94.39 171.47 91.82 169.44 90.59 171.47 89.47 171.47 86.8"
+                                    fill="#0d1019" />
+                                <polygon points="174.15 86.8 172.01 96.31 173.49 96.31 175.8 86.8 174.15 86.8"
+                                    fill="#0d1019" />
+                                <circle cx="118.79" cy="116.8" r="5.44" fill="#fafafa" />
+                                <path
+                                    d="M115.64,115.24v3.12a.45.45,0,0,0,.23.39l2.69,1.55a.45.45,0,0,0,.45,0l2.7-1.55a.44.44,0,0,0,.22-.39v-3.12a.44.44,0,0,0-.22-.39L119,113.3a.45.45,0,0,0-.45,0l-2.69,1.55A.45.45,0,0,0,115.64,115.24Z"
+                                    fill="#0a0d16" />
+                                <path
+                                    d="M151.16,132.29h0a.4.4,0,0,1-.26.37,3,3,0,0,0-1.75,1.75.4.4,0,0,1-.37.26h0a.41.41,0,0,1-.37-.26,3,3,0,0,0-1.75-1.75.41.41,0,0,1-.26-.37h0a.4.4,0,0,1,.26-.37,3,3,0,0,0,1.75-1.75.4.4,0,0,1,.37-.26h0a.39.39,0,0,1,.37.26,3,3,0,0,0,1.75,1.75A.39.39,0,0,1,151.16,132.29Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M94,126.5v-3.11a.46.46,0,0,0-.22-.4l-2.7-1.55a.45.45,0,0,0-.45,0L87.91,123a.47.47,0,0,0-.23.4v3.11a.45.45,0,0,0,.23.39l2.69,1.56a.45.45,0,0,0,.45,0l2.7-1.56A.44.44,0,0,0,94,126.5Z"
+                                    fill="#4C9BEB" />
+                                <path
+                                    d="M109.84,77.06V75.51a.26.26,0,0,0-.11-.2l-1.35-.77a.2.2,0,0,0-.23,0l-1.35.77a.23.23,0,0,0-.11.2v1.55a.22.22,0,0,0,.11.2l1.35.78a.24.24,0,0,0,.23,0l1.35-.78A.24.24,0,0,0,109.84,77.06Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M104.79,98.74v-1.2a.19.19,0,0,0-.08-.15l-1-.59a.17.17,0,0,0-.17,0l-1,.59a.19.19,0,0,0-.08.15v1.2a.18.18,0,0,0,.08.15l1,.6a.17.17,0,0,0,.17,0l1-.6A.18.18,0,0,0,104.79,98.74Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M103.58,106.14v-1.2a.18.18,0,0,0-.08-.15l-1-.59a.14.14,0,0,0-.17,0l-1,.59a.18.18,0,0,0-.08.15v1.2a.18.18,0,0,0,.08.15l1,.6a.17.17,0,0,0,.17,0l1-.6A.18.18,0,0,0,103.58,106.14Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M94.87,104.74v-1.19a.19.19,0,0,0-.09-.15l-1-.6a.17.17,0,0,0-.17,0l-1,.6a.16.16,0,0,0-.09.15v1.19a.16.16,0,0,0,.09.15l1,.6a.17.17,0,0,0,.17,0l1-.6A.19.19,0,0,0,94.87,104.74Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M72.42,87.39V86.2a.19.19,0,0,0-.09-.15l-1-.6a.19.19,0,0,0-.18,0l-1,.6a.16.16,0,0,0-.09.15v1.19a.16.16,0,0,0,.09.15l1,.6a.19.19,0,0,0,.18,0l1-.6A.19.19,0,0,0,72.42,87.39Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M152.12,49.72V48.16A.21.21,0,0,0,152,48l-1.35-.78a.22.22,0,0,0-.22,0l-1.35.78a.21.21,0,0,0-.11.19v1.56a.23.23,0,0,0,.11.2l1.35.77a.22.22,0,0,0,.22,0l1.35-.77A.23.23,0,0,0,152.12,49.72Z"
+                                    fill="#fafafa" />
+                                <path
+                                    d="M95.77,61.88a2.66,2.66,0,0,1-2.45-1.05c-.92-1.53.66-3.47,1.18-4.11A1,1,0,1,1,96.12,58c-1,1.26-1,1.76-1,1.76.73.49,5.82-.68,13.14-5.09s10.7-8.32,10.59-9.31a5.23,5.23,0,0,0-.57,0,8,8,0,0,0-1.51.18,1,1,0,1,1-.42-2c.83-.17,3.36-.7,4.3.86,1.86,3.08-6.24,9.08-11.32,12.14C105.49,58.82,99.33,61.88,95.77,61.88Z"
+                                    fill="#4C9BEB" />
+                                <circle cx="163.78" cy="49.09" r="1.64" fill="#fafafa" />
+                                <circle cx="112.52" cy="73.65" r="0.82" fill="#fafafa" />
+                                <circle cx="113.34" cy="91.55" r="0.82" fill="#fafafa" />
+                                <circle cx="95.8" cy="128.58" r="0.82" fill="#fafafa" />
+                                <circle cx="118.79" cy="131.47" r="0.82" fill="#fafafa" />
+                                <circle cx="134.58" cy="138.54" r="0.82" fill="#fafafa" />
+                                <circle cx="131.64" cy="126.94" r="0.82" fill="#fafafa" />
+                                <circle cx="193.13" cy="83.98" r="1.4" fill="#4C9BEB" />
+                                <circle cx="108.25" cy="54.26" r="7.62" fill="#4C9BEB" />
+                                <polygon
+                                    points="81.5 81.56 82.58 83.55 84.58 84.64 82.58 85.73 81.5 87.72 80.41 85.73 78.41 84.64 80.41 83.55 81.5 81.56"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="90.83 84.62 92.37 87.45 95.2 89 92.37 90.54 90.83 93.37 89.28 90.54 86.45 89 89.28 87.45 90.83 84.62"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="82.61 90.59 84.46 93.97 87.84 95.82 84.46 97.66 82.61 101.04 80.77 97.66 77.39 95.82 80.77 93.97 82.61 90.59"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="167.79 54.85 168.62 56.38 170.15 57.22 168.62 58.05 167.79 59.59 166.95 58.05 165.42 57.22 166.95 56.38 167.79 54.85"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="188.33 98.55 189.42 100.55 191.41 101.64 189.42 102.72 188.33 104.72 187.24 102.72 185.25 101.64 187.24 100.55 188.33 98.55"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="194.53 102.56 196.07 105.39 198.9 106.94 196.07 108.48 194.53 111.31 192.98 108.48 190.16 106.94 192.98 105.39 194.53 102.56"
+                                    fill="#4C9BEB" />
+                                <polygon
+                                    points="198.29 92.09 200.13 95.47 203.51 97.31 200.13 99.16 198.29 102.54 196.44 99.16 193.06 97.31 196.44 95.47 198.29 92.09"
+                                    fill="#4C9BEB" />
+                            </svg>
+                            <p class="mensaje-de-error">Por favor encienda su ubicación y recargue la página o indica en
+                                el buscador tu ciudad.</p>
+                        </div>
                     </div>
                     <div class="content-info" id="description">
                         <div class="estado-del-clima" id="estadoDelClima">
 
                         </div>
                         <div class="cont-temp" id="temperature">
-                            
+
                         </div>
                         <div class="cont-min-max" id="minAndMax">
-                            
+
                         </div>
                     </div>
                     <div class="mas-detalles">
-                        <div class="mini-detalles" id="wind">  
+                        <div class="mini-detalles" id="wind">
                         </div>
                         <div class="mini-detalles" id="lluvias">
                         </div>
@@ -76,20 +168,26 @@
                 </section>
                 <section class="music-lofi">
                     <h3 class="title-youtube"><i class="bi bi-music-note-beamed"></i> Music for you</h3>
-                    <iframe class="youtube-lofi" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="lofi hip hop radio 📚 - beats to relax/study to" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe class="youtube-lofi" src="https://www.youtube.com/embed/jfKfPfyJRdk"
+                        title="lofi hip hop radio 📚 - beats to relax/study to" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
                 </section>
             </section>
             <section class="play-music">
                 <div class="content-mgg-contruction">
-                    <img src="./asset/image/ilustrations/Internet cats-60b6.svg" alt="Gato programando" class="svg-ilustracion">
-                    <p class="mensaje-contruccion">Sección en construcción (Reproductor de música con <i class="bi bi-spotify"></i> Spotify)</p>
+                    <img src="./asset/image/ilustrations/Internet cats-60b6.svg" alt="Gato programando"
+                        class="svg-ilustracion">
+                    <p class="mensaje-contruccion">Sección en construcción (Reproductor de música con <i
+                            class="bi bi-spotify"></i> Spotify)</p>
                 </div>
             </section>
         </div>
         <div class="climaWeek-notice">
             <section class="cont-climeWeek play-music">
                 <div class="content-mgg-contruction">
-                    <img src="./asset/image/ilustrations/Alert signal-60b6.svg" alt="Gato programando" class="svg-ilustracion">
+                    <img src="./asset/image/ilustrations/Alert signal-60b6.svg" alt="Gato programando"
+                        class="svg-ilustracion">
                     <p class="mensaje-contruccion">Sección en construcción (Clima Semanal)</p>
                 </div>
             </section>
@@ -97,37 +195,37 @@
                 <div class="cont-title-options">
                     <h2 class="title-section-noti"><i class="bi bi-globe-americas"></i> Noticias de última hora</h2>
                     <!-- Example split danger button -->
-                        <!-- <button type="button" class="btn btn-danger">Seleccione su país</button>
+                    <!-- <button type="button" class="btn btn-danger">Seleccione su país</button>
                         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
                         </button> -->
-                        <select class="select-country" id="selectCountry">
-                            <option value="invalid">Seleccionar país</option>
-                            <option value="ar">Argentina</option>
-                            <option value="br">Brazil</option>
-                            <option value="ca">Canada</option>
-                            <option value="ch">Chile</option>
-                            <option value="co">Colombia</option>
-                            <option value="gb">England</option>
-                            <option value="fr">Francia</option>
-                            <option value="in">India</option>
-                            <option value="in">Japan</option>
-                            <option value="mx">Mexico</option>
-                            <option value="ru">Russia</option>
-                            <option value="us">United States</option>
-                            <option value="ve">Venezuela</option>
-                        </select >
-                    </div>        
+                    <select class="select-country" id="selectCountry">
+                        <option value="invalid">Seleccionar país</option>
+                        <option value="ar">Argentina</option>
+                        <option value="br">Brazil</option>
+                        <option value="ca">Canada</option>
+                        <option value="ch">Chile</option>
+                        <option value="co">Colombia</option>
+                        <option value="gb">England</option>
+                        <option value="fr">Francia</option>
+                        <option value="in">India</option>
+                        <option value="in">Japan</option>
+                        <option value="mx">Mexico</option>
+                        <option value="ru">Russia</option>
+                        <option value="us">United States</option>
+                        <option value="ve">Venezuela</option>
+                    </select>
+                </div>
                 <div id="noticias" class="noticias">
                     <div class="campo-vacio">
                         <img class="ilustracion-error" src="./asset/image/ilustrations/Currect location-60b6.svg" alt="Ilustracion de error">
-                        <p class="mensaje-de-error">No se ha seleccionado ningún país, por favor seleccione su país. (Api funciona solo en localhost)</p>
+                        <p class="mensaje-de-error">No se ha seleccionado ningún país, por favor seleccione su país.</p>
                     </div>
                 </div>
             </section>
         </div>
-        </main>
-        <footer class="footer">
+    </main>
+    <footer class="footer">
         <div class="cont-dep-copy">
             <h4 class="desarrolador">Desarrollado por Esteban Karaputny</h4>
             <p class="copyright">
@@ -137,12 +235,12 @@
         <div class="redes-footer">
             <h4 class="title-redes">Redes del desarrollador</h4>
             <div class="cont-redes-link">
-                <a href="https://www.linkedin.com/in/esteban-karaputny/" target="_blank" class="link-redes"><i class="bi bi-linkedin"></i>  LinkedIn</a >
+                <a href="https://www.linkedin.com/in/esteban-karaputny/" target="_blank" class="link-redes"><i class="bi bi-linkedin"></i>  Linkdin</a >
                 <a href="https://www.instagram.com/esteban_karaputny/" class="link-redes"><i class="bi bi-instagram"></i>  Instagram</a >
                 <a href="https://github.com/estebankaraputny " class="link-redes"><i class="bi bi-github"></i>  Github</a >
             </div>
         </div>
     </footer>
 </body>
-<script src="./js/index.js"></script>
+<script src="./script/index.js"></script>
 </html>
