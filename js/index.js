@@ -40,6 +40,7 @@ const API_KEY_NOTICIAS = 'd148999bd2314dca8c00a2b099ee9e06'
 const nameCity = document.getElementById("city");
 const buttonSearch = document.getElementById("button-ubi");
 
+
 const fetchData = position => {
     const {latitude, longitude} = position.coords;
     fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY_CLIMA}`)
@@ -67,6 +68,7 @@ const fetchDateInput = (city) => {
     })
     .then(dataJSON => setWeatherDate(dataJSON));
 }
+fetchDateInput()
 
     // IMPRIMIR EN EL DOM 
 
@@ -122,9 +124,9 @@ const setWeatherDate = (data) =>{
     `
 
     lluvia.innerHTML = `
-        <i class="bi bi-droplet-half"></i>
+        <i class="bi bi-cloud"></i>
         <p class="title-detalles">
-            Lluvia
+            Nubosidad
         </p>
         <p class="date-detalles">
             ${data.clouds.all}%
